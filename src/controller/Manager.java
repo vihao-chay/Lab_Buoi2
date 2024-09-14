@@ -102,5 +102,23 @@ public class Manager {
     }
 // -----------------
     // UpdateInformation => Kiểm tra xem cháu nó có tồn tài hay ko => nếu có thì mới update
-
+    public void updateProduct(String str){
+        Scanner sc = new Scanner(System.in);
+        double newListPrice;
+        if(checkIdExist(str)==false){
+            System.out.println("Product does not exist");
+            return;
+        }
+        do{
+            System.out.println("enter new price: ");
+            newListPrice = Double.parseDouble(sc.nextLine()); 
+        }while(newListPrice>0);
+        for(Product price: listProduct){
+            if(price.getId().equals(str)){
+                price.setListPrice(newListPrice);
+            }
+        }
+        System.out.println("Product has been update");
+        
+    }
 }
